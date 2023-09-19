@@ -42,9 +42,10 @@ from eventoanimais;
  espécie dos animais
  que fizeram translado (2 linhas retornadas).*/
 
-select a.nome, e.nomeComum, t.descricao, ev.descricao
-from animais a, especies e, tipoeventos t, eventoanimais ev
-where ev.tipoEvento = t.idTipo and descricao = 'translado';
+select a.nome, e.nomeComum
+from animais a, especies e, eventoanimais ev, tipoeventos t
+where t.descricao='Translado' and a.idEspecie = e.idEspecie 
+and a.idAnimal = ev.idAnimal and ev.tipoevento = t.idTipo;
 
 /*Recupere o nome
  e estoque do produto fornecido pelas ongs,
