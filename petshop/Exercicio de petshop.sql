@@ -20,8 +20,8 @@ where a.raca = r.id and r.nivel_cuidados = 'alto';
 /*4) Recupere o nome do cliente e o tipo de serviço  que ele solicitou. Traga apenas os serviços que ainda não foram pagos.(469 linhas retornadas)*/
 
 select c.nome, s.tipo_servico
-from cliente c, servico s
-where c.id = animal.cliente = a.id = s.animal = s.tipo_servico = tipo.id = tipo.pago is null;
+from cliente c, servico s, animal a,tipo_servico ts
+where pago = 0 and c.id = a.cliente and a.id = s.animal and s .tipo_servico = ts.id;
 
 select * from servico;
 
