@@ -134,6 +134,7 @@ INSERT INTO `servico` VALUES (1,200,5,'2020-12-01',_binary ''),(2,500,6,'2020-1
 /*!40000 ALTER TABLE `servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Table structure for table `tipo_servico`
 --
