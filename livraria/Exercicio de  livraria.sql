@@ -1,14 +1,37 @@
-/*QUESTÃO 01: Recupere os tipos de serviços e valor, para os serviços que custam mais de R$50,00.(6 linhas retornadas)*/
+/*Recupere o nome e o ano de nascimento dos autores que ainda estão vivos.(10 linhas retornadas)*/
 use livraria;
 
-select 
-from 
-where;
+select a.nomeautor, a.anonascimento
+from autor a
+where anofalecimento is null;
 
-/*QUESTÃO 02: Recupere o nome do animal juntamente com sua raça.(1008 linhas retornadas)*/
 
-/*QUESTÃO 03: Recupere todas as informações dos animais que possuem alto nível de cuidados.(375 linhas retornadas)*/
+/*Questão 2: Recupere todos os dados das editoras situadas no Rio de Janeiro e que foram fundadas a mais de 30 anos.(1 linha retornada)*/
 
-/*QUESTÃO 04: Recupere o nome do cliente e o tipo de serviço que ele solicitou. Traga apenas os serviços que ainda não foram pagos.(469 linhas retornadas)*/
+select *
+from editora 
+where e.cidade = 'rio de janeiro' and anofundacao < date_sub(curdate(), interval 30 year);
 
-/*QUESTÃO 05: Recupere as informações das clientes, o nome e a raça dos animais que elas possuem e o tipo de serviço que foi realizado. Elimine os valores repetidos. (948 linhas retornadas)*/
+/*select *, year(curdate()) - anofundacao
+from editora
+where year(curdate())-anofundacao > 30 and cidade = 'rio de janeiro'*/
+
+
+/*Questão 3: Recupere todos os dados das editoras que publicaram livros que possuem o nome Sistema de Banco de Dados.(2 linhas retornadas)*/
+
+select e.*, l.nomelivro
+from editora e, livro l
+where e.nomeeditora = l.nomeeditora and l.nomelivro = 'sistema de banco de dados';
+
+
+/*Questão 4: Recupere o nome dos autores e o nome do livro que eles publicaram.(10 linhas retornadas)*/
+
+select a.nomeautor, l.nomelivro
+from autor a, livro l, autoria au
+where a.numautor = au.numautor and au.numlivro = l.numlivro;
+
+/*Questão 5: O nome do cliente e o nome do livro que ele comprou.(19 linhas retornadas)*/
+
+select c.nomecli, l.nomelivro 
+from cliente c, livro l, vendas v
+where c.numcli = v.numcli and v.numlivro = l.numlivro;
