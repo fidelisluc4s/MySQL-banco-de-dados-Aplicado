@@ -26,6 +26,6 @@ where pago = 0 and c.id = a.cliente and a.id = s.animal and s .tipo_servico = ts
 select * from servico;
 
 /*5) Recupere as informações das clientes, o nome e a raça dos animais que elas possuem e o tipo de serviço que foi realizado. Elimine os valores repetidos. (948 linhas retornadas)*/
-select distinct c.*, a.nome,a.raca,s.tipo_servico
-from cliente c, animal a, servico s
-where c.id = a.cliente and a.id = s.animal;
+select distinct c.*, a.nome,r.nome,ts.tipo
+from cliente c, animal a, servico s, raca r, tipo_servico ts
+where c.id = a.cliente and a.id = s.animal and s.tipo_servico = ts.id and r.id = a.raca;
