@@ -31,10 +31,10 @@ where codigo_empregado not in (select codigo_empregado from dependente);
 
 select *
 from empregado e 
-where e.codigo_dep not in (select codigo_dep from departamento where  cidade = 'rio de janeiro') ;
+where e.codigo_dep not in (select codigo_dep from departamento where  local = 'rio de janeiro') ;
 
 /*7) Recupere o nome dos cargos que estão ocupados por algum empregado. Use IN.*/
 
 select c.nome_cargo
 from cargo c
-where c.codigo_cargo not in(select codigo_cargo from empregado where codigo_cargo is not null);
+where c.codigo_cargo not in(select codigo_cargo from empregado);
