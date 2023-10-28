@@ -17,7 +17,9 @@ group by p.placa;
 select c.*, min(valor_dano) as menor_dano
 from carro c
 inner join participou p on c.placa = p.placa
-group by p.placa;
+group by p.placa
+order by min(valor_dano) asc
+limit 1;
 
 /*4) Recupere as informações do(s) carro(s) que participou(aram) do maior número de ocorrências.*/
 select c.*, count(a.numero_ocorrencia) as maior_num_ocorrencia
@@ -32,7 +34,8 @@ min(p.valor_dano)as minimo_valor_dano, max(p.valor_dano) as maximo_valor_dano
 from carro c
 inner join participou p on c.placa = p.placa
 inner join acidente a on p.numero_ocorrencia = a.numero_ocorrencia
-group by c.placa;
+group by c.placa
+order by c.ano asc;
 
 
 /*6) Recupere todos as informações do acidente mais antigo.*/
