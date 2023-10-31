@@ -27,7 +27,7 @@ que contenha uma subquery, utilize o operador in ou not in.*/
 /*3)Selecione o nome e a situação dos médicos que estão na situação "transferido", cujos nomes possuem 
 exatamente 7 caracteres e que não possuem consultas agendadas após 01/01/2016.*/
 
-select distinct nome_medico, situacao 
+select nome_medico, situacao 
 from medico
 where situacao ='transferido' and nome_medico like '_______' and id_medico not in (select c.id_medico from consulta c
 where data_consulta > '2016-01-01');
