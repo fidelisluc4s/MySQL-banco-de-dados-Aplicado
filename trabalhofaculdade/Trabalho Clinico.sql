@@ -10,16 +10,16 @@ and me.nome_medicamento = 'mebendazol';
 
 /*QUESTÃO 2(0,5 PONTO): Escreva o enunciado e a resolução de uma consulta em SQL e álgebra relacional 
 que contenha junção interna e contenha pelo menos 5 tabelas. */
-/*2)Selecione o nome do paciente, o nome da cidade e o nome do país para as consultas em que o nome do paciente 
-contém o sobrenome braga e more no Brasil, sem repetições.*/
+/*2)Selecione o nome do médico, o nome do medicamento, a situação e o nome do paciente para todas as prescrições de medicamentos com o nome "Haloperidol" 
+que os medico esteja ativos e que foram prescritas por médicos cujos nomes contêm o sobrenome "braga".*/
 
-select distinct p.nome_paciente, ci.nome_cidade, pa.nome_pais
+select m.nome_medico, me.nome_medicamento, m.situacao,pa.nome_paciente
 from consulta c
-inner join cidade ci on c.id_cidade = ci.id_cidade
-inner join paciente p on ci.id_cidade = p.id_cidade
-inner join pais pa on p.id_pais = pa.id_pais
-inner join estado e on pa.id_pais = e.id_pais
-where p.nome_paciente like '%braga%' and pa.nome_pais like 'brasil';
+right join medico m on c.id_medico = m.id_medico
+inner join prescricao p on  c.id_consulta = p.id_consulta
+left join medicamento me on  p.id_medicamento = me.id_medicamento
+inner join paciente pa on c.id_paciente = pa.id_paciente
+where m.nome_medico like '%braga%' and me.nome_medicamento = 'Haloperidol' and situacao = 'ativo';
 
 /*QUESTÃO 3(0,5 PONTO): Escreva o enunciado e a resolução de uma consulta em SQL 
 que contenha uma subquery, utilize o operador in ou not in.*/
