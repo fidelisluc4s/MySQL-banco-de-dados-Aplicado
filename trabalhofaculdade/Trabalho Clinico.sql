@@ -10,14 +10,14 @@ and me.nome_medicamento = 'mebendazol';
 
 /*QUESTÃO 2(0,5 PONTO): Escreva o enunciado e a resolução de uma consulta em SQL e álgebra relacional 
 que contenha junção interna e contenha pelo menos 5 tabelas. */
-/*2)Selecione o nome do médico, o nome do medicamento, a situação e o nome do paciente para todas as prescrições de medicamentos com o nome "Haloperidol" 
-que os medico esteja ativos e que foram prescritas por médicos cujos nomes contêm o sobrenome "braga".*/
+/*2)Selecione o nome do médico, o nome do medicamento, a situação e o nome do paciente para todas as prescrições de medicamentos 
+com o nome "Haloperidol" que os medico esteja ativos e que foram prescritas por médicos cujos nomes contêm o sobrenome "braga"*/
 
 select m.nome_medico, me.nome_medicamento, m.situacao,pa.nome_paciente
 from consulta c
-right join medico m on c.id_medico = m.id_medico
+inner join medico m on c.id_medico = m.id_medico
 inner join prescricao p on  c.id_consulta = p.id_consulta
-left join medicamento me on  p.id_medicamento = me.id_medicamento
+inner join medicamento me on  p.id_medicamento = me.id_medicamento
 inner join paciente pa on c.id_paciente = pa.id_paciente
 where m.nome_medico like '%braga%' and me.nome_medicamento = 'Haloperidol' and situacao = 'ativo';
 
