@@ -1,0 +1,34 @@
+select *
+from produto p
+where p.ID_PRODUTO not in (select pv.id_produto from produto_vendido pv);
+
+select *
+from produto p
+left join produto_vendido pv on p.ID_PRODUTO = pv.id_produto
+where pv.id_produto is null;
+
+select *
+from cliente c
+where c.ID_CLIENTE not in (select v.id_cliente from venda v);
+
+select *
+from cliente c
+left join venda v on c.ID_CLIENTE = v.ID_CLIENTE
+where v.ID_CLIENTE is null;
+
+select *
+from produto 
+where estoque = (select distinct max(ESTOQUE) from produto);
+
+select *
+from produto
+where preco_unitario = (select distinct min(preco_unitario) from produto);
+
+select v.*, sum(QUANTIDADE) as quan_vendido
+from produto_vendido p
+inner join venda v on v.nr_venda = p.NR_VENDA
+group by p.NR_VENDA
+having quan_vendido > 5
+order by quan_vendido desc;
+
+
