@@ -6,4 +6,4 @@ Junção Interna --------
 Junção Externa --------
 Subquery --------
 Funções de Agregação --------
-
+Segurança e Visão --------
