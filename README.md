@@ -7,3 +7,6 @@ Junção Externa --------
 Subquery --------
 Funções de Agregação --------
 Segurança e Visão --------
+Triggers // Tais eventos são os comandos da DML (Data
+Manipulation Language): INSERT, REPLACE,
+DELETE ou UPDATE. --------
